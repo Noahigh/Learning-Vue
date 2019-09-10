@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item {
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+	<div>Hello World</div>
+	<div id="app">
+        {{msg}}
+        <div>
+            <input type="text" v-model="info">
+            <button @click="handleClick">Add</button>
+            <ul>
+                <!-- <li v-for="item in list">{{item}}</li> -->
+                <todo-item v-for="item in list" :item="item"></todo-item>
+            </ul>
+        </div>
+	</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('todo-item', {
+            props: ['item'],
+            template: '<li class="item">{{item}}</li>'
+        });
+		var app = new Vue({
+			el: '#app',
+            data() {
+                return {
+                    msg: 'Hello Vue!',
+                    info: '',
+                    list: [],
+                }
+            },
+            methods: {
+                handleClick() {
+                    console.log(this.info);
+                    this.list.push(this.info);
+                    this.info = '';
+                }
+            }
+		})
+    </script>
+</body>
+</html>
