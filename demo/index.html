@@ -41,9 +41,18 @@
             },
             methods: {
                 handleClick() {
-                    console.log(this.info);
-                    this.list.push(this.info);
-                    this.info = '';
+                    // var temp = this.info.replace(/ a/g, "");
+                    var strLength = this.info.replace(/ /g, "").length;
+                    // this.strLength = temp.length;
+                    alert(strLength);
+                    alert(this.info);
+                    if(typeof this.info == "undefined" || this.info == "" || this.info == null || strLength == 0) {
+                        alert("信息：" + this.info);
+                    } else {
+                        console.log(this.info);
+                        this.list.push(this.info);
+                        this.info = '';
+                    }
                 }
             }
 		})
