@@ -14,6 +14,10 @@
                   <template v-slot:todoItem>
                     <span style="font-size: 20px">{{item}}</span>                    
                   </template>
+                  <!-- 引用插槽写法 - 作用域插槽 -->
+                  <template v-solt:item="todoItemProps">
+                    <span :style="{fontSize: '20px', color: todoItemProps.checked ? 'origin' : 'green'}"></span>
+                  </template>
                 </todo-item>
             </ul>
         </div>
